@@ -1,6 +1,20 @@
 // src/components/IngredientList.jsx
 const IngredientList = (props) => {
-  return <ul>// map through props.ingredients</ul>;
+  const handleClick = (event) => {
+    props.addItem();
+  };
+
+  return (
+    <>
+      <ul>
+        {props.ingredients.map((ingredient, idx) => (
+          <li style={{ backgroundColor: ingredient.color }} key={idx}>
+            <button onClick={handleClick}> {ingredient.name}</button>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
 };
 
 export default IngredientList;
