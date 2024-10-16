@@ -28,8 +28,8 @@ const App = () => {
     useStack((preStack) => [...preStack, stack]);
   };
 
-  const removeFromBurger = (ingredient) => {
-    useStack((prevStack) => prevStack.filter((stack) => stack !== ingredient));
+  const removeFromBurger = (idx) => {
+    useStack((prevStack) => prevStack.toSpliced(idx, 1));
   };
 
   return (
