@@ -1,6 +1,5 @@
 // src/App.jsx
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import IngredientList from "./component/IngredientList";
 import BurgerStack from "./component/BurgerStack";
@@ -26,15 +25,11 @@ const App = () => {
   const [stack, useStack] = useState([]);
 
   const addToBurger = (stack) => {
-    useStack((preStack) => {
-      return [...preStack, stack];
-    });
+    useStack((preStack) => [...preStack, stack]);
   };
 
-  const removeFromBurger = (addedIng) => {
-    useStack((prevStack) =>
-      prevStack.filter((addedIng) => addedIng.name !== prevStack.name)
-    );
+  const removeFromBurger = (ingredient) => {
+    useStack((prevStack) => prevStack.filter((stack) => stack !== ingredient));
   };
 
   return (
@@ -45,11 +40,7 @@ const App = () => {
           addItem={addToBurger}
           ingredients={availableIngredients}
         />
-
-        <BurgerStack
-          removeItem={removeFromBurger}
-          ingredients={availableIngredients}
-        />
+        <BurgerStack removeItem={removeFromBurger} ingredients={stack} />
       </section>
     </main>
   );
